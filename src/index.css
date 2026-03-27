@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  --background: 220 20% 4%;
+  --foreground: 210 20% 98%;
+  --card: 220 20% 6%;
+  --card-foreground: 210 20% 98%;
+  --popover: 220 20% 6%;
+  --popover-foreground: 210 20% 98%;
+  --primary: 217 91% 60%;
+  --primary-foreground: 220 20% 4%;
+  --secondary: 220 14% 12%;
+  --secondary-foreground: 210 20% 98%;
+  --muted: 220 14% 10%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 220 14% 12%;
+  --accent-foreground: 210 20% 98%;
+  --destructive: 0 62% 50%;
+  --destructive-foreground: 210 20% 98%;
+  --border: 220 14% 14%;
+  --input: 220 14% 12%;
+  --ring: 217 91% 60%;
+  --optimal: 142 71% 45%;
+  --frontier: 262 83% 58%;
+  --tangent: 38 92% 50%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  background: hsl(var(--secondary));
+  height: 6px;
+  border-radius: 3px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -5px;
+  background-color: hsl(var(--primary));
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: 2px solid hsl(var(--background));
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.3);
+  transition: all 0.15s ease;
+}
+
+input[type='range']::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+input[type='range']::-moz-range-track {
+  background: hsl(var(--secondary));
+  height: 6px;
+  border-radius: 3px;
+}
+
+input[type='range']::-moz-range-thumb {
+  background-color: hsl(var(--primary));
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: 2px solid hsl(var(--background));
+}
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: hsl(220, 14%, 14%);
+}
+
+.recharts-text {
+  fill: hsl(215, 20%, 65%);
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}

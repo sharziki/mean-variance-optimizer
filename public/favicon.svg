@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="pie" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="20" fill="#0a0c0f"/>
+  <!-- Pie chart slices -->
+  <circle cx="50" cy="50" r="30" fill="none" stroke="#3b82f6" stroke-width="12" stroke-dasharray="47 141" transform="rotate(-90 50 50)"/>
+  <circle cx="50" cy="50" r="30" fill="none" stroke="#22c55e" stroke-width="12" stroke-dasharray="35 153" stroke-dashoffset="-47" transform="rotate(-90 50 50)"/>
+  <circle cx="50" cy="50" r="30" fill="none" stroke="#f59e0b" stroke-width="12" stroke-dasharray="28 160" stroke-dashoffset="-82" transform="rotate(-90 50 50)"/>
+  <circle cx="50" cy="50" r="30" fill="none" stroke="#8b5cf6" stroke-width="12" stroke-dasharray="78 110" stroke-dashoffset="-110" transform="rotate(-90 50 50)"/>
+  <!-- Center dot -->
+  <circle cx="50" cy="50" r="10" fill="#0a0c0f"/>
+  <circle cx="50" cy="50" r="6" fill="url(#pie)"/>
+</svg>
