@@ -60,33 +60,37 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(var(--background))] p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-[hsl(var(--primary))] bg-opacity-20">
-              <PieChart className="w-8 h-8 text-[hsl(var(--primary))]" />
+    <div className="min-h-screen bg-[hsl(var(--background))]">
+      {/* Header */}
+      <header className="border-b border-[hsl(var(--border))] bg-[hsl(var(--card))]">
+        <div className="max-w-7xl mx-auto px-6 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-lg bg-[hsl(var(--primary))] bg-opacity-20">
+                <PieChart className="w-8 h-8 text-[hsl(var(--primary))]" />
+              </div>
+              <div>
+                <h1 className="text-3xl font-bold text-[hsl(var(--foreground))]">
+                  Mean-Variance Optimizer
+                </h1>
+                <p className="text-base text-[hsl(var(--muted-foreground))] mt-1">
+                  Markowitz portfolio optimization with quadratic programming
+                </p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-2xl font-bold text-[hsl(var(--foreground))]">
-                Mean-Variance Optimizer
-              </h1>
-              <p className="text-sm text-[hsl(var(--muted-foreground))]">
-                Markowitz portfolio optimization with quadratic programming
-              </p>
-            </div>
+            <button
+              onClick={runOptimization}
+              disabled={isCalculating}
+              className="flex items-center gap-2 px-4 py-2 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
+            >
+              <RefreshCw className={`w-4 h-4 ${isCalculating ? 'animate-spin' : ''}`} />
+              {isCalculating ? 'Calculating...' : 'Recalculate'}
+            </button>
           </div>
-          <button
-            onClick={runOptimization}
-            disabled={isCalculating}
-            className="flex items-center gap-2 px-4 py-2 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
-          >
-            <RefreshCw className={`w-4 h-4 ${isCalculating ? 'animate-spin' : ''}`} />
-            {isCalculating ? 'Calculating...' : 'Recalculate'}
-          </button>
         </div>
+      </header>
 
+      <main className="max-w-7xl mx-auto px-6 py-8 space-y-8">
         {/* Metrics Panel */}
         <MetricsPanel
           portfolio={selectedPortfolio}
@@ -96,11 +100,11 @@ function App() {
         />
 
         {/* Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Column - Controls */}
           <div className="space-y-6">
             {/* Parameters Card */}
-            <div className="bg-[hsl(var(--card))] rounded-xl border border-[hsl(var(--border))] p-6 space-y-5">
+            <div className="bg-[hsl(var(--card))] rounded-2xl border border-[hsl(var(--border))] p-6 space-y-5">
               <div className="flex items-center gap-2">
                 <Settings className="w-5 h-5 text-[hsl(var(--muted-foreground))]" />
                 <h2 className="text-lg font-semibold text-[hsl(var(--foreground))]">
@@ -157,7 +161,7 @@ function App() {
             </div>
 
             {/* Quick Select */}
-            <div className="bg-[hsl(var(--card))] rounded-xl border border-[hsl(var(--border))] p-6 space-y-4">
+            <div className="bg-[hsl(var(--card))] rounded-2xl border border-[hsl(var(--border))] p-6 space-y-4">
               <h3 className="text-sm font-semibold text-[hsl(var(--foreground))]">
                 Quick Select
               </h3>
@@ -199,7 +203,7 @@ function App() {
           </div>
 
           {/* Right Column - Charts */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="space-y-6">
             {/* Efficient Frontier */}
             <EfficientFrontierChart
               efficientFrontier={result?.efficientFrontier || []}
@@ -220,8 +224,7 @@ function App() {
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="text-center text-xs text-[hsl(var(--muted-foreground))] pt-4 space-y-1">
+        <div className="text-center text-sm text-[hsl(var(--muted-foreground))] pt-4 space-y-2">
           <p>
             Mean-Variance optimization using Lagrange multipliers for analytical solution.
             The efficient frontier represents portfolios with minimum variance for each target return.
@@ -230,19 +233,13 @@ function App() {
             Capital Market Line (CML) shows optimal combinations of the risk-free asset and tangency portfolio.
           </p>
         </div>
-        <footer className="mt-8 py-4 text-center text-xs text-[hsl(var(--muted-foreground))] border-t border-[hsl(var(--border))]">
-          Made by{' '}
-          <a 
-            href="https://github.com/sharziki" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-[hsl(var(--primary))] hover:underline"
-          >
-            Sharvil Saxena
-          </a>
-        </footer>
+      </main>
 
-      </div>
+      <footer className="border-t border-[hsl(var(--border))] mt-12">
+        <div className="max-w-7xl mx-auto px-6 py-6 text-center text-sm text-[hsl(var(--muted-foreground))]">
+          Made by Sharvil Saxena
+        </div>
+      </footer>
     </div>
   );
 }
